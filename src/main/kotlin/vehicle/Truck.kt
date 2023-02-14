@@ -1,0 +1,4 @@
+package vehicle
+
+class Truck {
+}

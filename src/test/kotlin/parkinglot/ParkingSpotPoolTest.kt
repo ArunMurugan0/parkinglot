@@ -59,4 +59,21 @@ class ParkingSpotPoolTest{
         assertEquals(false, parkingSpotPool.isAvailable(VehicleType.TWO_WHEELER))
         assertEquals(false, parkingSpotPool.isAvailable(VehicleType.HEAVY_FOUR_WHEELER))
     }
+
+    @Test
+    fun `it should be available after adding back`() {
+        val config = ParkingSpotCountForEachTypeConfig(mapOf(
+            VehicleType.TWO_WHEELER to 3,
+        ))
+        val parkingSpotPool = ParkingSpotPool(config)
+
+        val parkingSpotOne = parkingSpotPool.acquireParkingSpotOf(VehicleType.TWO_WHEELER)
+        parkingSpotPool.acquireParkingSpotOf(VehicleType.TWO_WHEELER)
+        parkingSpotPool.acquireParkingSpotOf(VehicleType.TWO_WHEELER)
+
+        parkingSpotPool.addBack(parkingSpotOne)
+        val actualParkingSpotOne = parkingSpotPool.acquireParkingSpotOf(VehicleType.TWO_WHEELER)
+
+        assertEquals(parkingSpotOne, actualParkingSpotOne)
+    }
 }
