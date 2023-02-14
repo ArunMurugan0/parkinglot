@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test
 import parkinglot.*
-import java.util.*
+import java.time.LocalDateTime
 import kotlin.test.assertEquals
 
 class TicketTest {
@@ -13,14 +13,14 @@ class TicketTest {
                     type = ParkingSpotType.TWO_WHEELER,
                     parkingSpotNumber = ParkingSpotNumber(1)
                 ),
-                Date()
+                LocalDateTime.MIN
             )
         val ticketTwo = Ticket(
             parkingSpot = ParkingSpot(
                 type = ParkingSpotType.HEAVY_FOUR_WHEELER,
                 parkingSpotNumber = ParkingSpotNumber(2)
             ),
-            Date()
+            LocalDateTime.MIN
         )
 
         assertEquals(TicketNumber(1L), ticketOne.ticketNumber)

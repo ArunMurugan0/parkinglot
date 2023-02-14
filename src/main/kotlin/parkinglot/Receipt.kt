@@ -1,4 +1,5 @@
 package parkinglot
-import java.util.*
 
-data class Receipt(val ticket: Ticket, val exitDateTime: Date, val fee: Long)
+import java.time.LocalDateTime
+
+data class Receipt(val ticket: Ticket, val exitDateTime: LocalDateTime, val fee: Long)

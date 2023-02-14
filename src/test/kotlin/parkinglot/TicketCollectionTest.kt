@@ -2,7 +2,7 @@ package parkinglot
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import java.util.*
+import java.time.LocalDateTime
 
 class TicketCollectionTest {
 
@@ -14,14 +14,14 @@ class TicketCollectionTest {
                     type = ParkingSpotType.TWO_WHEELER,
                     parkingSpotNumber = ParkingSpotNumber(1)
                 ),
-                Date()
+                LocalDateTime.MIN
             )
         val ticketTwo = Ticket(
             parkingSpot = ParkingSpot(
                 type = ParkingSpotType.HEAVY_FOUR_WHEELER,
                 parkingSpotNumber = ParkingSpotNumber(2)
             ),
-            Date()
+            LocalDateTime.MIN
         )
 
         val tickets = TicketCollection()
@@ -39,7 +39,7 @@ class TicketCollectionTest {
                 parkingSpot = ParkingSpot(
                     type = ParkingSpotType.TWO_WHEELER, parkingSpotNumber = ParkingSpotNumber(1)
                 ),
-                Date()
+                LocalDateTime.MIN
             )
 
         val tickets = TicketCollection()
@@ -54,7 +54,7 @@ class TicketCollectionTest {
                 parkingSpot = ParkingSpot(
                     type = ParkingSpotType.TWO_WHEELER, parkingSpotNumber = ParkingSpotNumber(1)
                 ),
-                Date()
+                LocalDateTime.MIN
             )
         val tickets = TicketCollection()
         tickets.add(ticketOne)
