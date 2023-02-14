@@ -1,6 +1,6 @@
 package parkinglot
 
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.util.*
 
@@ -10,11 +10,17 @@ class TicketCollectionTest {
     fun `it should be able to access all tickets that are added`() {
         val ticketOne =
             Ticket(
-                parkingSpot = ParkingSpot(type = ParkingSpotType.TWO_WHEELER, parkingSpotNumber = 1),
+                parkingSpot = ParkingSpot(
+                    type = ParkingSpotType.TWO_WHEELER,
+                    parkingSpotNumber = ParkingSpotNumber(1)
+                ),
                 Date()
             )
         val ticketTwo = Ticket(
-            parkingSpot = ParkingSpot(type = ParkingSpotType.HEAVY_FOUR_WHEELER, parkingSpotNumber = 2),
+            parkingSpot = ParkingSpot(
+                type = ParkingSpotType.HEAVY_FOUR_WHEELER,
+                parkingSpotNumber = ParkingSpotNumber(2)
+            ),
             Date()
         )
 
@@ -30,7 +36,9 @@ class TicketCollectionTest {
     fun `it should return null when trying retrieve if the ticket is not found`() {
         val ticketOne =
             Ticket(
-                parkingSpot = ParkingSpot(type = ParkingSpotType.TWO_WHEELER, parkingSpotNumber = 1),
+                parkingSpot = ParkingSpot(
+                    type = ParkingSpotType.TWO_WHEELER, parkingSpotNumber = ParkingSpotNumber(1)
+                ),
                 Date()
             )
 
@@ -43,7 +51,9 @@ class TicketCollectionTest {
     fun `it should remove the ticket from the collection`() {
         val ticketOne =
             Ticket(
-                parkingSpot = ParkingSpot(type = ParkingSpotType.TWO_WHEELER, parkingSpotNumber = 1),
+                parkingSpot = ParkingSpot(
+                    type = ParkingSpotType.TWO_WHEELER, parkingSpotNumber = ParkingSpotNumber(1)
+                ),
                 Date()
             )
         val tickets = TicketCollection()
