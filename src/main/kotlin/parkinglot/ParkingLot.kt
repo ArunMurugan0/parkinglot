@@ -60,7 +60,7 @@ abstract class ParkingLot(parkingSpotCountConfig: ParkingSpotCountForEachTypeCon
 
     fun generateParkingTicket(vehicle: Vehicle, entryDateTime: LocalDateTime): Ticket {
         return generateParkingTicket(
-            vehicleType = vehicle.getParkingSpotType(),
+            vehicleType = vehicle.getVehicleType(),
             entryDateTime
         )
     }

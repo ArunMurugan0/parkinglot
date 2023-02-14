@@ -3,5 +3,5 @@ package vehicle
 import parkinglot.VehicleType
 
 abstract class Vehicle {
-    abstract fun getParkingSpotType(): VehicleType
+    abstract fun getVehicleType(): VehicleType
 }
