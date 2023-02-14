@@ -10,53 +10,53 @@ class ParkingSpotPoolTest{
     @Test
     fun `it should provide a parking spot when available`() {
         val config = ParkingSpotCountForEachTypeConfig(mapOf(
-            ParkingSpotType.TWO_WHEELER to 1,
-            ParkingSpotType.LIGHT_FOUR_WHEELER to 2,
+            VehicleType.TWO_WHEELER to 1,
+            VehicleType.LIGHT_FOUR_WHEELER to 2,
         ))
 
         val parkingSpotPool = ParkingSpotPool(config)
 
-        val parkingSpot = parkingSpotPool.acquireParkingSpotOf(ParkingSpotType.TWO_WHEELER)
+        val parkingSpot = parkingSpotPool.acquireParkingSpotOf(VehicleType.TWO_WHEELER)
 
-        assertEquals(ParkingSpotType.TWO_WHEELER, parkingSpot.type)
+        assertEquals(VehicleType.TWO_WHEELER, parkingSpot.vehicleType)
     }
 
     @Test
     fun `it should throw exception if parking spot is not available`() {
         val config = ParkingSpotCountForEachTypeConfig(mapOf(
-            ParkingSpotType.TWO_WHEELER to 1,
+            VehicleType.TWO_WHEELER to 1,
         ))
         val parkingSpotPool = ParkingSpotPool(config)
-        parkingSpotPool.acquireParkingSpotOf(ParkingSpotType.TWO_WHEELER)
+        parkingSpotPool.acquireParkingSpotOf(VehicleType.TWO_WHEELER)
 
         assertThrows<ParkingSpotNotAvailableException> {
-            parkingSpotPool.acquireParkingSpotOf(ParkingSpotType.TWO_WHEELER)
+            parkingSpotPool.acquireParkingSpotOf(VehicleType.TWO_WHEELER)
         }
         assertThrows<ParkingSpotNotAvailableException> {
-            parkingSpotPool.acquireParkingSpotOf(ParkingSpotType.HEAVY_FOUR_WHEELER)
+            parkingSpotPool.acquireParkingSpotOf(VehicleType.HEAVY_FOUR_WHEELER)
         }
     }
 
     @Test
     fun `it should return true if parking spot is available`() {
         val config = ParkingSpotCountForEachTypeConfig(mapOf(
-            ParkingSpotType.TWO_WHEELER to 2,
+            VehicleType.TWO_WHEELER to 2,
         ))
         val parkingSpotPool = ParkingSpotPool(config)
-        parkingSpotPool.acquireParkingSpotOf(ParkingSpotType.TWO_WHEELER)
+        parkingSpotPool.acquireParkingSpotOf(VehicleType.TWO_WHEELER)
 
-        assertEquals(true, parkingSpotPool.isAvailable(ParkingSpotType.TWO_WHEELER))
+        assertEquals(true, parkingSpotPool.isAvailable(VehicleType.TWO_WHEELER))
     }
 
     @Test
     fun `it should return false if parking spot is not available`() {
         val config = ParkingSpotCountForEachTypeConfig(mapOf(
-            ParkingSpotType.TWO_WHEELER to 1,
+            VehicleType.TWO_WHEELER to 1,
         ))
         val parkingSpotPool = ParkingSpotPool(config)
-        parkingSpotPool.acquireParkingSpotOf(ParkingSpotType.TWO_WHEELER)
+        parkingSpotPool.acquireParkingSpotOf(VehicleType.TWO_WHEELER)
 
-        assertEquals(false, parkingSpotPool.isAvailable(ParkingSpotType.TWO_WHEELER))
-        assertEquals(false, parkingSpotPool.isAvailable(ParkingSpotType.HEAVY_FOUR_WHEELER))
+        assertEquals(false, parkingSpotPool.isAvailable(VehicleType.TWO_WHEELER))
+        assertEquals(false, parkingSpotPool.isAvailable(VehicleType.HEAVY_FOUR_WHEELER))
     }
 }

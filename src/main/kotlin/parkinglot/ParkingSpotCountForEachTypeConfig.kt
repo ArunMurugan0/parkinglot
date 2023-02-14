@@ -1,7 +1,7 @@
 package parkinglot
 
-class ParkingSpotCountForEachTypeConfig(private val parkingSpotCountForEachTypeMap: Map<ParkingSpotType, Long>) {
-    fun getParkingSpotCount(type: ParkingSpotType): Long {
+class ParkingSpotCountForEachTypeConfig(private val parkingSpotCountForEachTypeMap: Map<VehicleType, Long>) {
+    fun getParkingSpotCount(type: VehicleType): Long {
         return parkingSpotCountForEachTypeMap.getOrDefault(type,  0)
     }
 }

@@ -1,2 +1,2 @@
 package parkinglot
-data class ParkingSpot(val type: ParkingSpotType, val parkingSpotNumber: ParkingSpotNumber)
+data class ParkingSpot(val vehicleType: VehicleType, val parkingSpotNumber: ParkingSpotNumber)

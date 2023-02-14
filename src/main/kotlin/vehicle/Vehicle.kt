@@ -1,7 +1,7 @@
 package vehicle
 
-import parkinglot.ParkingSpotType
+import parkinglot.VehicleType
 
 abstract class Vehicle {
-    abstract fun getParkingSpotType(): ParkingSpotType
+    abstract fun getParkingSpotType(): VehicleType
 }

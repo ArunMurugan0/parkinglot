@@ -10,14 +10,14 @@ class TicketTest {
         val ticketOne =
             Ticket(
                 parkingSpot = ParkingSpot(
-                    type = ParkingSpotType.TWO_WHEELER,
+                    vehicleType = VehicleType.TWO_WHEELER,
                     parkingSpotNumber = ParkingSpotNumber(1)
                 ),
                 LocalDateTime.MIN
             )
         val ticketTwo = Ticket(
             parkingSpot = ParkingSpot(
-                type = ParkingSpotType.HEAVY_FOUR_WHEELER,
+                vehicleType = VehicleType.HEAVY_FOUR_WHEELER,
                 parkingSpotNumber = ParkingSpotNumber(2)
             ),
             LocalDateTime.MIN

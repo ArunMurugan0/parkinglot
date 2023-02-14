@@ -12,8 +12,8 @@ abstract class ParkingLot(parkingSpotCountConfig: ParkingSpotCountForEachTypeCon
 
     protected abstract fun calculateFee(ticket: Ticket, exitDateTime: LocalDateTime): Long
 
-    private fun isParkingSpotNotAvailable(parkingSpotType: ParkingSpotType) =
-        !freeParkingSpotsPool.isAvailable(parkingSpotType)
+    private fun isParkingSpotNotAvailable(vehicleType: VehicleType) =
+        !freeParkingSpotsPool.isAvailable(vehicleType)
 
     private fun markTicketAsClosed(ticket: Ticket) {
         openTickets.remove(ticket)
@@ -33,14 +33,14 @@ abstract class ParkingLot(parkingSpotCountConfig: ParkingSpotCountForEachTypeCon
         fee = calculateFee(ticket, exitDateTime)
     )
 
-    private fun generateParkingTicket(parkingSpotType: ParkingSpotType, entryDateTime: LocalDateTime): Ticket {
-        if (isParkingSpotNotAvailable(parkingSpotType)) {
+    private fun generateParkingTicket(vehicleType: VehicleType, entryDateTime: LocalDateTime): Ticket {
+        if (isParkingSpotNotAvailable(vehicleType)) {
             throw ParkingSpotNotAvailableException()
         }
 
         val ticket = Ticket(
             entryDateTime = entryDateTime,
-            parkingSpot = freeParkingSpotsPool.acquireParkingSpotOf(parkingSpotType)
+            parkingSpot = freeParkingSpotsPool.acquireParkingSpotOf(vehicleType)
         )
 
         markTicketAsOpen(ticket)
@@ -60,7 +60,7 @@ abstract class ParkingLot(parkingSpotCountConfig: ParkingSpotCountForEachTypeCon
 
     fun generateParkingTicket(vehicle: Vehicle, entryDateTime: LocalDateTime): Ticket {
         return generateParkingTicket(
-            parkingSpotType = vehicle.getParkingSpotType(),
+            vehicleType = vehicle.getParkingSpotType(),
             entryDateTime
         )
     }
