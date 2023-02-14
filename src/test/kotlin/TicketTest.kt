@@ -1,9 +1,5 @@
-
 import org.junit.jupiter.api.Test
-import parkinglot.ParkingSpot
-import parkinglot.ParkingSpotType
-import parkinglot.Ticket
-import parkinglot.TicketNumber
+import parkinglot.*
 import java.util.*
 import kotlin.test.assertEquals
 
@@ -13,11 +9,17 @@ class TicketTest {
     fun `It should have increment Ticket Number whenever new ticket is created`() {
         val ticketOne =
             Ticket(
-                parkingSpot = ParkingSpot(type = ParkingSpotType.TWO_WHEELER, parkingSpotNumber = 1),
+                parkingSpot = ParkingSpot(
+                    type = ParkingSpotType.TWO_WHEELER,
+                    parkingSpotNumber = ParkingSpotNumber(1)
+                ),
                 Date()
             )
         val ticketTwo = Ticket(
-            parkingSpot = ParkingSpot(type = ParkingSpotType.HEAVY_FOUR_WHEELER, parkingSpotNumber = 2),
+            parkingSpot = ParkingSpot(
+                type = ParkingSpotType.HEAVY_FOUR_WHEELER,
+                parkingSpotNumber = ParkingSpotNumber(2)
+            ),
             Date()
         )
 
